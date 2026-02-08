@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>URL Warning</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    h1 { color: red; }
+    button { padding: 10px 20px; margin: 10px; cursor: pointer; }
+    #proceed { background-color: #ffc107; border: none; }
+    #cancel { background-color: #dc3545; color: white; border: none; }
+  </style>
+</head>
+<body>
+  <h1>Warning: Potential Phishing Risk</h1>
+  <p>This URL contains non-standard or non-ASCII characters (e.g., Cyrillic or other scripts), which could be used to trick you into visiting a fake site.</p>
+  <p>URL: <span id="url"></span></p>
+  <button id="proceed">Proceed Anyway</button>
+  <button id="cancel">Cancel</button>
+  <script src="warning.js"></script>
+</body>
+</html>

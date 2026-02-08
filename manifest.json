@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Non-ASCII URL Detector",
+  "version": "1.0",
+  "description": "Detects non-ASCII characters in URLs and warns about potential phishing.",
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "64": "icon64.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "non-ascii-url-detector@stephenjones.com",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "web_accessible_resources": [
+    "warning.html",
+    "warning.js"
+  ]
+}
