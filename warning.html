@@ -3,19 +3,70 @@
 <head>
   <title>URL Warning</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-    h1 { color: red; }
-    button { padding: 10px 20px; margin: 10px; cursor: pointer; }
-    #proceed { background-color: #ffc107; border: none; }
-    #cancel { background-color: #dc3545; color: white; border: none; }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .warning-container {
+      background-color: #ffdddd;
+      border: 2px solid #ff0000;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #ff0000;
+      margin-bottom: 20px;
+    }
+    .address-bar {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 20px 0;
+      font-size: 16px;
+      word-break: break-all;
+      text-align: left;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .explanation {
+      font-size: 14px;
+      color: #666666;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    #proceed {
+      background-color: #ffc107;
+    }
+    #cancel {
+      background-color: #dc3545;
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <h1>Warning: Potential Phishing Risk</h1>
-  <p>This URL contains non-standard or non-ASCII characters (e.g., Cyrillic or other scripts), which could be used to trick you into visiting a fake site.</p>
-  <p>URL: <span id="url"></span></p>
-  <button id="proceed">Proceed Anyway</button>
-  <button id="cancel">Cancel</button>
+  <div class="warning-container">
+    <h1>Warning: Potential Phishing Risk</h1>
+    <p>This URL may contain deceptive non-ASCII characters that could trick you into visiting a fake site.</p>
+    <div class="address-bar" id="url"></div>
+    <p class="explanation">The bolded characters above are non-standard (non-ASCII) and triggered this warning.</p>
+    <button id="proceed">Proceed Anyway</button>
+    <button id="cancel">Cancel</button>
+  </div>
   <script src="warning.js"></script>
 </body>
 </html>
