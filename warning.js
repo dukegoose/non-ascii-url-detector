@@ -284,6 +284,7 @@ function displayHighlightedUrl(url, container) {
 // Get the displayed URL and container
 const displayedUrl = getDisplayedUrl(originalUrl);
 const urlContainer = document.getElementById('url');
+console.log(punycode.ToUnicode('xn--pple-43d.com'));
 displayHighlightedUrl(displayedUrl, urlContainer);
 
 document.getElementById('proceed').addEventListener('click', () => {
