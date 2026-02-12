@@ -246,8 +246,8 @@ function getDisplayedUrl(punyUrl) {
   try {
     const urlObj = new URL(punyUrl);
     const decodedHostname = punycode.ToUnicode(urlObj.hostname);
-    urlObj.hostname = decodedHostname;
-    return urlObj.toString();
+    // Manually reconstruct to avoid URL object's re-encoding
+    return punyUrl.replace(urlObj.hostname, decodedHostname);
   } catch (e) {
     return punyUrl; // Fallback if not a valid URL
   }
@@ -284,7 +284,6 @@ function displayHighlightedUrl(url, container) {
 // Get the displayed URL and container
 const displayedUrl = getDisplayedUrl(originalUrl);
 const urlContainer = document.getElementById('url');
-console.log(punycode.ToUnicode('xn--pple-43d.com'));
 displayHighlightedUrl(displayedUrl, urlContainer);
 
 document.getElementById('proceed').addEventListener('click', () => {
