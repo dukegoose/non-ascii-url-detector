@@ -1,15 +1,37 @@
 const params = new URLSearchParams(location.search);
 const originalUrl = params.get('original');
 
-// Function to highlight non-ASCII characters by wrapping them in <strong>
-function highlightNonAscii(url) {
-  // Decode to show actual characters
+// Function to create and append highlighted content safely
+function displayHighlightedUrl(url, container) {
   const decoded = decodeURI(url);
-  return decoded.replace(/[^\x00-\x7F]/g, '<strong>$&</strong>');
+  let currentText = '';
+  
+  for (const char of decoded) {
+    if (/[^\x00-\x7F]/.test(char)) {
+      // Append any accumulated ASCII text
+      if (currentText) {
+        container.appendChild(document.createTextNode(currentText));
+        currentText = '';
+      }
+      // Append non-ASCII as bold
+      const strong = document.createElement('strong');
+      strong.textContent = char;
+      container.appendChild(strong);
+    } else {
+      // Accumulate ASCII characters
+      currentText += char;
+    }
+  }
+  
+  // Append any remaining ASCII text
+  if (currentText) {
+    container.appendChild(document.createTextNode(currentText));
+  }
 }
 
-// Display the highlighted URL in the address bar
-document.getElementById('url').innerHTML = highlightNonAscii(originalUrl);
+// Get the container and display the URL safely
+const urlContainer = document.getElementById('url');
+displayHighlightedUrl(originalUrl, urlContainer);
 
 document.getElementById('proceed').addEventListener('click', () => {
   browser.runtime.sendMessage({ action: 'allow', url: originalUrl });
