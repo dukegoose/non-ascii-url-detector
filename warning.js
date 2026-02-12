@@ -191,6 +191,7 @@ function displayHighlightedUrl(url, container) {
 
 // Get the displayed URL and container
 const displayedUrl = getDisplayedUrl(originalUrl);
+console.log('Original:', originalUrl); console.log('Displayed:', displayedUrl);
 const urlContainer = document.getElementById('url');
 displayHighlightedUrl(displayedUrl, urlContainer);
 
